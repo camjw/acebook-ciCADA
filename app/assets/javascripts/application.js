@@ -13,12 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require react
 //= require_tree .
-
-
-// $(document).ready(function() {
-//   $('#submit-like').click(function (event) {
-//     console.log("it worked!");
-//     event.preventDefault();
-//   })
-// })
