@@ -36,11 +36,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    redirect_to(root_url :notice => 'Record not found') unless @post
-    @comments = @post.comments.all
-    @comment = @post.comments.build
-    @user = User.find(current_user.id)
+    begin
+      @post = Post.find(params[:id])
+      @comments = @post.comments.all
+      @comment = @post.comments.build
+      @user = User.find(current_user.id)
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/elegant404.html", layout: false, status: :not_found
+    end
   end
 
   private
