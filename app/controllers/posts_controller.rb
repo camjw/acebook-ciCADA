@@ -42,7 +42,7 @@ class PostsController < ApplicationController
       @comment = @post.comments.build
       @user = User.find(current_user.id)
     rescue ActiveRecord::RecordNotFound
-      render :file => "#{Rails.root}/public/elegant404.html", layout: false, status: :not_found
+      render :file => "#{Rails.root}/public/post404.html", layout: false, status: :not_found
     end
   end
 
