@@ -11,5 +11,8 @@ class ProfilesController < ApplicationController
     @comments = @post.comments.all
     @comment = @post.comments.build
     @image_posts = ImagePost.all
+    rescue ActiveRecord::RecordNotFound
+    render file: "#{Rails.root}/public/user404.html", layout: false,
+           status: :not_found
   end
 end
