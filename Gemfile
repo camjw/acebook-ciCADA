@@ -15,6 +15,9 @@ gem 'devise'
 # add React gem
 gem 'react-rails'
 
+# Add exception handler
+gem 'exception_handler'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'jquery-rails'
 gem 'rails'
