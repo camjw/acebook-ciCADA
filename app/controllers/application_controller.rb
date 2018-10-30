@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
                                       keys: %i[username email
                                                password current_password])
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not found')
+  end
 end

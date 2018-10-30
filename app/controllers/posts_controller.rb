@@ -37,6 +37,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    redirect_to(root_url :notice => 'Record not found') unless @post
     @comments = @post.comments.all
     @comment = @post.comments.build
     @user = User.find(current_user.id)
