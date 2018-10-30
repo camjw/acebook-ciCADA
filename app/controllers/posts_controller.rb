@@ -36,14 +36,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    begin
-      @post = Post.find(params[:id])
-      @comments = @post.comments.all
-      @comment = @post.comments.build
-      @user = User.find(current_user.id)
-    rescue ActiveRecord::RecordNotFound
-      render :file => "#{Rails.root}/public/post404.html", layout: false, status: :not_found
-    end
+    @post = Post.find(params[:id])
+    @comments = @post.comments.all
+    @comment = @post.comments.build
+    @user = User.find(current_user.id)
+  rescue ActiveRecord::RecordNotFound
+    render file: "#{Rails.root}/public/post404.html", layout: false,
+           status: :not_found
   end
 
   private
