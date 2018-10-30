@@ -5,6 +5,7 @@ AllCops:
     - db/schema.rb
     - 'vendor/**/*'
     - config/initializers/devise.rb
+    - 'node_modules/**/*'
   TargetRubyVersion: 2.5
 
 Metrics/BlockLength:
