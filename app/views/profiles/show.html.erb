@@ -24,11 +24,13 @@
       <% @posts.reverse.each do |post| %>
       <div class='wall_post'>
         <%= simple_format(post.message) %>
-        <%= link_to post_path(post[:id]), method: :delete do %>
-        Delete post
-        <% end %>
-        <%= link_to ('profiles/' + @user.id.to_s + '/posts/' + post.id.to_s + '/edit') do %>
-        Edit post
+        <% if user_made_this_post(post)  %>
+          <%= link_to post_path(post[:id]), method: :delete do %>
+          Delete post
+          <% end %>
+          <%= link_to ('profiles/' + @user.id.to_s + '/posts/' + post.id.to_s + '/edit') do %>
+          Edit post
+          <% end %>
         <% end %>
         <table>
           <tr>
@@ -59,6 +61,28 @@
     </div>
 
     <div class="col-sm">
+      <h3> Right hand side </h3>
+      <h3>Image Posts</h3>
+      <hr>
+    <% @image_posts.reverse.each do |image_post| %>
+          <%= image_post.caption %>
+          <%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %>
+          <%= link_to 'Show', image_post %>
+            <% if user_made_this_post(image_post) %>
+              <%= link_to 'Edit', edit_image_post_path(image_post) %>
+              <%= link_to 'Destroy', image_post_path(image_post, profile_id: @user.id), method: :delete %>
+            <% end %>
+          <% image_like_checker = image_post.image_likes.find { |like| like.user_id == current_user.id } %>
+          <% if image_like_checker %>
+          <%= button_to 'Unlike', image_post_image_like_path(image_post[:id], image_like_checker), method: :delete %>
+          <% else %>
+          <%= button_to 'Like', image_post_image_likes_path(image_post[:id]), method: :post %>
+          <% end %>
+          <p><%= image_post.image_likes.count %> <%= image_post.image_likes.count == 1 ? 'Like' : 'Likes'%></p>
+          <%= button_to 'Comments', image_post_url(image_post[:id]), method: :get %>
+          <p><%= image_post.image_comments.count %> <%= image_post.image_comments.count == 1 ? 'Comment' : 'Comments'%></p>
+          <hr>
+        <% end %>
       <h1>Image Posts</h1>
 
       <table>
@@ -88,8 +112,7 @@
       <br>
 
       <%= link_to 'New Image Post', new_image_post_path %>
-
+      </div>
     </div>
-
   </div>
 </div>
