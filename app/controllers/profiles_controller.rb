@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
     @comment = @post.comments.build
     @image_posts = ImagePost.all
   end
-  
+
   def username_show
     @user = User.where(username: params[:username])[0]
     @posts = Post.where(profile_message: @user.id)
