@@ -13,11 +13,13 @@
       <% @posts.reverse.each do |post| %>
       <div class='wall_post'>
         <%= simple_format(post.message) %>
-        <%= link_to post_path(post[:id]), method: :delete do %>
-        Delete post
-        <% end %>
-        <%= link_to ('profiles/' + @user.id.to_s + '/posts/' + post.id.to_s + '/edit') do %>
-        Edit post
+        <% if user_made_this_post(post) %>
+          <%= link_to post_path(post[:id]), method: :delete do %>
+          Delete post
+          <% end %>
+          <%= link_to ('profiles/' + @user.id.to_s + '/posts/' + post.id.to_s + '/edit') do %>
+          Edit post
+          <% end %>
         <% end %>
         <% like_checker = post.likes.find { |like| like.user_id == current_user.id } %>
         <% if like_checker %>
@@ -53,8 +55,10 @@
               <td><%= image_post.caption %></td>
               <td><%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %></td>
               <td><%= link_to 'Show', image_post %></td>
+              <% if user_made_this_post(image_post) %>
               <td><%= link_to 'Edit', edit_image_post_path(image_post) %></td>
               <td><%= link_to 'Destroy', image_post_path(image_post, profile_id: @user.id), method: :delete %></td>
+              <% end %>
             </tr>
 
           <% end %>

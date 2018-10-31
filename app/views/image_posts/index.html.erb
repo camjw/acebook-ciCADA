@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @image_posts.each do |image_post| %>
+    <% @image_posts.reverse.each do |image_post| %>
       <tr>
         <td><%= image_post.caption %></td>
         <td><%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %></td>
@@ -21,7 +21,6 @@
         <td><%= link_to 'Edit', edit_image_post_path(image_post) %></td>
         <td><%= link_to 'Destroy', image_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
     <% end %>
 
   </tbody>
