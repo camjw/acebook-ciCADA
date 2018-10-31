@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :image_posts, only: 'get'
   end
+  post '/change_font', to: 'profiles#update_settings'
   get ':id', to: 'profiles#show'
 end

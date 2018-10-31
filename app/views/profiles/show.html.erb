@@ -1,11 +1,15 @@
+<body style='background-color:<%= @user.background_colour%>'>
 
-<div class="container" style='font-family:"<%= @user.font %>";background-color:<%= @user.background_colour %>'>
+<div id='profileBody' class="container" style='font-family:"<%= @user.font %>";'>
   <div class="row">
     <div class="col-sm">
       <h1> Welcome to Your profile <%= @user.username %> </h1>
     </div>
     <div class="col-sm">
       <%= react_component 'FontSelect' %>
+      <%= react_component 'ColourSelect' %>
+      <%= react_component 'SubmitButton' %>
+
     </div>
   </div>
   <hr>
