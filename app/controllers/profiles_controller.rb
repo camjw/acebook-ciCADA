@@ -13,21 +13,4 @@ class ProfilesController < ApplicationController
     @comment = @post.comments.build
     @image_posts = ImagePost.all
   end
-
-  def update_settings
-    puts params
-    parsed_json = params[:profile]
-    user = User.find(parsed_json[:userId])
-    user.update(font: parsed_json[:font],
-                background_colour: parsed_json[:background_colour])
-  end
-
-  def display_settings
-    user = User.find(params[:id])
-    respond_to do |format|
-      response = { :font => user.font,
-                   :background_colour => user.background_colour }
-      format.json  { render :json => response }
-    end
-  end
 end

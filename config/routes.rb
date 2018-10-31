@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     resources :image_posts, only: 'get'
   end
 
-  post '/change_settings', to: 'profiles#update_settings'
+  post '/change_settings', to: 'settings#update_settings'
   get '/change_settings', to: redirect('/')
-  get '/display_settings/:id', to: 'profiles#display_settings'
+  get '/display_settings/:id', to: 'settings#display_settings'
   get ':id', to: 'profiles#show'
 end
