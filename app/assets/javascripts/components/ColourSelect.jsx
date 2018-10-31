@@ -1,6 +1,11 @@
 class ColourSelect extends React.Component {
   constructor(props) {
     super(props);
+    fetch('http://localhost:3000/display_settings/1')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('colourSelector').value = data.colour
+    })
   }
 
   render() {
