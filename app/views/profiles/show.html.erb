@@ -6,9 +6,11 @@
       <h1> Welcome to Your profile <%= @user.username %> </h1>
     </div>
     <div class="col-sm">
-      <%= react_component 'FontSelect' %>
-      <%= react_component 'ColourSelect' %>
-      <%= react_component 'SubmitButton' %>
+      <% if current_user.id == @user.id %>
+        <%= react_component 'FontSelect' %>
+        <%= react_component 'ColourSelect' %>
+        <%= react_component 'SubmitButton' %>
+      <% end %>
 
     </div>
   </div>
