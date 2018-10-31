@@ -1,9 +1,16 @@
-<h1> Welcome to Your profile <%= @user.username %> </h1>
 
-<%= react_component 'Main' %>
 
 
 <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1> Welcome to Your profile <%= @user.username %> </h1>
+    </div>
+    <div class="col-sm">
+      <%= react_component 'FontSelect' %>
+    </div>
+  </div>
+  <hr>
   <div class="row">
     <div class="col-sm">
       <h3>Add a post:</h3>
@@ -19,22 +26,35 @@
         <%= link_to ('profiles/' + @user.id.to_s + '/posts/' + post.id.to_s + '/edit') do %>
         Edit post
         <% end %>
-        <% like_checker = post.likes.find { |like| like.user_id == current_user.id } %>
-        <% if like_checker %>
-        <%= button_to 'Unlike', post_like_path(post[:id], like_checker), method: :delete %>
-        <% else %>
-        <%= button_to 'Like', post_likes_path(post[:id]), method: :post %>
-        <% end %>
-        <p><%= post.likes.count %> <%= post.likes.count == 1 ? 'Like' : 'Likes'%></p>
-        <%= button_to 'Comments', post_url(post[:id]), method: :get %>
-        <p><%= post.comments.count %> <%= post.comments.count == 1 ? 'Comment' : 'Comments'%></p>
+        <table>
+          <tr>
+            <td>
+              <% like_checker = post.likes.find { |like| like.user_id == current_user.id } %>
+              <% if like_checker %>
+              <%= button_to 'Unlike', post_like_path(post[:id], like_checker), method: :delete %>
+              <% else %>
+              <%= button_to 'Like', post_likes_path(post[:id]), method: :post %>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to 'Comments', post_url(post[:id]), method: :get %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><%= post.likes.count %> <%= post.likes.count == 1 ? 'Like' : 'Likes'%></p>
+            </td>
+            <td>
+              <p><%= post.comments.count %> <%= post.comments.count == 1 ? 'Comment' : 'Comments'%></p>
+            </td>
+          </tr>
+        </table>
         <hr>
       </div>
       <% end %>
     </div>
 
     <div class="col-sm">
-      <h1> Right hand side </h1>
       <h1>Image Posts</h1>
 
       <table>
@@ -61,9 +81,6 @@
 
         </tbody>
       </table>
-      <p>
-
-        </p>
       <br>
 
       <%= link_to 'New Image Post', new_image_post_path %>
