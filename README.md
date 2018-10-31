@@ -1,9 +1,9 @@
 # AceBook
 
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=deployed_app&style=popout)](http://acebook-cicada.eu-west-2.elasticbeanstalk.com)
 [![Build Status](https://travis-ci.org/Kharouk/acebook-ciCADA.svg?branch=master)](https://travis-ci.org/Kharouk/acebook-ciCADA)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5674a4684704c9f4c615/test_coverage)](https://codeclimate.com/github/Kharouk/acebook-ciCADA/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5674a4684704c9f4c615/maintainability)](https://codeclimate.com/github/Kharouk/acebook-ciCADA/maintainability)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website&style=popout)](http://acebook-cicada.eu-west-2.elasticbeanstalk.com)
 
 
 This repo is a Ruby on Rails clone of FaceBook built by ciCADA. Signed up users of AceBook share text and image posts and respond to them through likes and comments.
