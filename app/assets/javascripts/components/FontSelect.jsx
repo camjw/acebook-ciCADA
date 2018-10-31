@@ -1,9 +1,9 @@
 class FontSelect extends React.Component {
   constructor(props) {
     super(props);
-    getSettingsData()
-      .then(data => {
-        document.getElementById('fontSelector').value = data.font
+    getSettingsData('font')
+      .then(font => {
+        document.getElementById('fontSelector').value = font
     })
   }
 
