@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controller for the comments
+# Controller for the profile
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   protect_from_forgery unless: -> { request.format.json? }

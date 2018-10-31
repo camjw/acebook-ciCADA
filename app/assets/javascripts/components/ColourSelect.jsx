@@ -4,7 +4,7 @@ class ColourSelect extends React.Component {
     fetch('http://localhost:3000/display_settings/1')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('colourSelector').value = data.colour
+        document.getElementById('colourSelector').value = data.background_colour
     })
   }
 
