@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def update_settings
+    puts params
     parsed_json = params[:profile]
     user = User.find(parsed_json[:userId])
     user.update(font: parsed_json[:font],
@@ -28,5 +29,5 @@ class ProfilesController < ApplicationController
                    :background_colour => user.background_colour }
       format.json  { render :json => response }
     end
-  end 
+  end
 end
