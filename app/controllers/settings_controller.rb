@@ -6,11 +6,9 @@ class SettingsController < ApplicationController
 
   def display_settings
     user = User.find(params[:id])
-    puts user
     respond_to do |format|
       response = { :font => user.font,
                    :background_colour => user.background_colour }
-      puts response
       format.json  { render :json => response }
     end
   end
