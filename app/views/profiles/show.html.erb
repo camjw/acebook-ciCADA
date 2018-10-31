@@ -1,9 +1,20 @@
-<h1> Welcome to Your profile <%= @user.username %> </h1>
+<body style='background-color:<%= @user.background_colour%>'>
 
-<%= react_component 'Main' %>
+<div id='profileBody' class="container" style='font-family:"<%= @user.font %>";'>
+  <div class="row">
+    <div class="col-sm">
+      <h1> Welcome to Your profile <%= @user.username %> </h1>
+    </div>
+    <div class="col-sm">
+      <% if current_user.id == @user.id %>
+        <%= react_component 'FontSelect' %>
+        <%= react_component 'ColourSelect' %>
+        <%= react_component 'SubmitButton' %>
+      <% end %>
 
-
-<div class="container">
+    </div>
+  </div>
+  <hr>
   <div class="row">
     <div class="col-sm">
       <h3>Add a post:</h3>
@@ -21,15 +32,29 @@
           Edit post
           <% end %>
         <% end %>
-        <% like_checker = post.likes.find { |like| like.user_id == current_user.id } %>
-        <% if like_checker %>
-        <%= button_to 'Unlike', post_like_path(post[:id], like_checker), method: :delete %>
-        <% else %>
-        <%= button_to 'Like', post_likes_path(post[:id]), method: :post %>
-        <% end %>
-        <p><%= post.likes.count %> <%= post.likes.count == 1 ? 'Like' : 'Likes'%></p>
-        <%= button_to 'Comments', post_url(post[:id]), method: :get %>
-        <p><%= post.comments.count %> <%= post.comments.count == 1 ? 'Comment' : 'Comments'%></p>
+        <table>
+          <tr>
+            <td>
+              <% like_checker = post.likes.find { |like| like.user_id == current_user.id } %>
+              <% if like_checker %>
+              <%= button_to 'Unlike', post_like_path(post[:id], like_checker), method: :delete %>
+              <% else %>
+              <%= button_to 'Like', post_likes_path(post[:id]), method: :post %>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to 'Comments', post_url(post[:id]), method: :get %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><%= post.likes.count %> <%= post.likes.count == 1 ? 'Like' : 'Likes'%></p>
+            </td>
+            <td>
+              <p><%= post.comments.count %> <%= post.comments.count == 1 ? 'Comment' : 'Comments'%></p>
+            </td>
+          </tr>
+        </table>
         <hr>
       </div>
       <% end %>
@@ -39,7 +64,7 @@
       <h3> Right hand side </h3>
       <h3>Image Posts</h3>
       <hr>
-        <% @image_posts.reverse.each do |image_post| %>
+    <% @image_posts.reverse.each do |image_post| %>
           <%= image_post.caption %>
           <%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %>
           <%= link_to 'Show', image_post %>
@@ -58,6 +83,34 @@
           <p><%= image_post.image_comments.count %> <%= image_post.image_comments.count == 1 ? 'Comment' : 'Comments'%></p>
           <hr>
         <% end %>
+      <h1>Image Posts</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Caption</th>
+            <th> Posted at </th>
+            <th>Picture</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @image_posts.each do |image_post| %>
+            <tr>
+              <td><%= image_post.caption %></td>
+              <td><%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %></td>
+              <td><%= link_to 'Show', image_post %></td>
+              <td><%= link_to 'Edit', edit_image_post_path(image_post) %></td>
+              <td><%= link_to 'Destroy', image_post_path(image_post, profile_id: @user.id), method: :delete %></td>
+            </tr>
+
+          <% end %>
+
+        </tbody>
+      </table>
+      <br>
+
       <%= link_to 'New Image Post', new_image_post_path %>
       </div>
     </div>
