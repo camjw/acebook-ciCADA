@@ -1,10 +1,6 @@
 class ColourSelect extends React.Component {
   constructor(props) {
     super(props);
-    getSettingsData('colour')
-      .then(colour => {
-        document.getElementById('colourSelector').value = colour
-    })
   }
 
   render() {

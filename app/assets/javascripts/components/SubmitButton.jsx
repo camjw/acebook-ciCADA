@@ -4,6 +4,11 @@ class SubmitButton extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this)
+    getSettingsData()
+      .then(data => {
+        document.getElementById('colourSelector').value = data.background_colour
+        document.getElementById('fontSelector').value = data.font
+    })
   }
 
   sendDataToRails(font, colour, route) {
