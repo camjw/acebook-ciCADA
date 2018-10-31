@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'welcome_page#timeline'
-  get 'welcome', to: 'welcome_page#welcome'
 
   resources :welcome_page
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -27,5 +26,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :image_posts, only: 'get'
   end
+
+  post '/change_settings', to: 'profiles#update_settings'
+  get '/change_settings', to: redirect('/')
   get ':id', to: 'profiles#show'
 end
