@@ -15,7 +15,9 @@ require 'rails_helper'
 RSpec.describe ImageCommentsHelper, type: :helper do
   describe '#find_image_comment_email' do
     it 'gets the correct email for a given image comment' do
-      user = User.create(email: 'testabc123@mail.com', password: 'password')
+      user = User.create(email: 'testabc123@mail.com',
+                         username: 'reachoutandtouchme',
+                         password: 'password')
       expected_email = 'testabc123@mail.com'
       expect(helper.find_image_comment_email(user.id)).to eq expected_email
     end

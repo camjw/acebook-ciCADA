@@ -5,6 +5,7 @@ FactoryBot.define do
   end
   factory :user do
     email { 'factory@mail.co' }
+    username { 'wethebestmusic' }
     password { 'password' }
   end
 end
