@@ -24,3 +24,7 @@ h3 {
 .mb-0 {
   color: white;
 }
+
+#about {
+  opacity: 0.8;
+}
