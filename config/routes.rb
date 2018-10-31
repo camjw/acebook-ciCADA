@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
   post '/change_settings', to: 'profiles#update_settings'
   get '/change_settings', to: redirect('/')
+  get '/display_settings/:id', to: 'profiles#display_settings'
   get ':id', to: 'profiles#show'
 end
