@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :image_posts, only: 'get'
   end
-  post '/change_font', to: 'profiles#update_settings'
+
+  post '/change_settings', to: 'profiles#update_settings'
+  get '/change_settings', to: redirect('/')
   get ':id', to: 'profiles#show'
 end

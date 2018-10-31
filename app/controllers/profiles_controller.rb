@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   def update_settings
     parsed_json = params[:profile]
     user = User.find(parsed_json[:userId])
-    user.update({ font: parsed_json[:font],
-                  background_colour: parsed_json[:background_colour] })
+    user.update(font: parsed_json[:font],
+                background_colour: parsed_json[:background_colour])
   end
 end
