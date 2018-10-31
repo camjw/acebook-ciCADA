@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :image_posts
   has_many :comments
+  validates_format_of :username, with: /^[a-zA-Z][a-zA-Z0-9.,$;]+$/,
+                                 multiline: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :likes, dependent: :destroy

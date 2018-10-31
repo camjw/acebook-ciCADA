@@ -23,7 +23,7 @@ class SubmitButton extends React.Component {
   handleSubmit(event) {
     font = document.getElementById('fontSelector').value
     colour = document.getElementById('colourSelector').value
-    this.postToDatabase(font, colour, window.location.pathname)
+    this.postToDatabase(font, colour, window.location.pathname);
     document.getElementById('profileBody').style.fontFamily = font
     document.body.style.backgroundColor = colour
   }

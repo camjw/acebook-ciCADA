@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :image_comments
     resources :image_likes
   end
-  resources :profiles
+
+  resources :profiles do
+  end
 
   get 'profiles/:id/posts/:post_id/edit', to: 'posts#edit_profile_post'
 
@@ -29,5 +31,7 @@ Rails.application.routes.draw do
 
   post '/change_settings', to: 'profiles#update_settings'
   get '/change_settings', to: redirect('/')
-  get ':id', to: 'profiles#show'
+
+  get '/:id' => 'profiles#show', :constraints => { id: /\d+/ }
+  get '/:username', to: 'profiles#username_show', constraints: { status: /\w+/ }
 end

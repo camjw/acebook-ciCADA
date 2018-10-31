@@ -16,6 +16,16 @@ class ProfilesController < ApplicationController
            status: :not_found
   end
 
+  def username_show
+    @user = User.where(username: params[:username])[0]
+    @posts = Post.where(profile_message: @user.id)
+    @post = Post.new
+    @comments = @post.comments.all
+    @comment = @post.comments.build
+    @image_posts = ImagePost.all
+    render :show
+  end
+
   def update_settings
     parsed_json = params[:profile]
     user = User.find(parsed_json[:userId])
