@@ -13,7 +13,7 @@
       <% @posts.reverse.each do |post| %>
       <div class='wall_post'>
         <%= simple_format(post.message) %>
-        <% if user_made_this_post(post) %>
+        <% if user_made_this_post(post)  %>
           <%= link_to post_path(post[:id]), method: :delete do %>
           Delete post
           <% end %>
@@ -50,7 +50,7 @@
         </thead>
 
         <tbody>
-          <% @image_posts.each do |image_post| %>
+          <% @image_posts.reverse.each do |image_post| %>
             <tr>
               <td><%= image_post.caption %></td>
               <td><%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %></td>
@@ -60,8 +60,22 @@
               <td><%= link_to 'Destroy', image_post_path(image_post, profile_id: @user.id), method: :delete %></td>
               <% end %>
             </tr>
-
+            <tr>
+            <% image_like_checker = image_post.image_likes.find { |like| like.user_id == current_user.id } %>
+            <% if image_like_checker %>
+            <%= button_to 'Unlike', image_post_image_like_path(image_post[:id], image_like_checker), method: :delete %>
+            <% else %>
+            <%= button_to 'Like', image_post_image_likes_path(image_post[:id]), method: :post %>
+            <% end %>
+            <p><%= image_post.image_likes.count %> <%= image_post.image_likes.count == 1 ? 'Like' : 'Likes'%></p>
+            <%= button_to 'Comments', image_post_url(image_post[:id]), method: :get %>
+            <p><%= image_post.image_comments.count %> <%= image_post.image_comments.count == 1 ? 'Comment' : 'Comments'%></p>
+            <hr>
+            </tr>
+          </div>
           <% end %>
+
+
 
         </tbody>
       </table>
