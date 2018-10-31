@@ -5,6 +5,7 @@ class SettingsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def display_settings
+    puts params
     user = User.find(params[:id])
     respond_to do |format|
       response = { font: user.font,
@@ -14,6 +15,7 @@ class SettingsController < ApplicationController
   end
 
   def update_settings
+    puts params
     parsed_json = params[:setting]
     user = User.find(parsed_json[:userId])
     user.update(font: parsed_json[:font],
