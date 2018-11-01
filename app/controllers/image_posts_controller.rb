@@ -30,16 +30,8 @@ class ImagePostsController < ApplicationController
   # POST /image_posts
   # POST /image_posts.json
   def create
-    @image_post = ImagePost.new(image_post_params)
-
-    respond_to do |format|
-      @image_post.save
-      format.html do
-        redirect_to @image_post, notice: 'Image post was'\
-        ' successfully created.'
-      end
-      format.json { render :show, status: :created, location: @image_post }
-    end
+    @image_post = ImagePost.create(image_post_params)
+    redirect_back(fallback_location: root_url)
   end
 
   # PATCH/PUT /image_posts/1

@@ -5,7 +5,7 @@
     <h1>My Image Posts</h1>
   </div>
   <div class="row">
-    <% get_images_by_user(current_user).each do |image_post| %>
+    <% get_images_by_user(current_user).reverse.each do |image_post| %>
       <div class="container">
         <div class="row">
           <h2><%= image_post.caption %></h2>

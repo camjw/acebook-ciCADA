@@ -16,8 +16,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @post = Post.new
+    redirect_to root_url
   end
 
   def edit
