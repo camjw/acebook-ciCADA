@@ -13,11 +13,15 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CommentsHelper, type: :helper do
+  let(:user) { FactoryBot.create(:user) }
+
+  before :each do
+    login_as(user, scope: :user)
+  end
+
   describe '#get_comment_email' do
     it 'gets the correct email for a given user_id' do
-      user = User.create(email: 'testabc123@mail.com', username: 'slimshady',
-                         password: 'password')
-      expect(helper.get_comment_email(user.id)).to eq 'testabc123@mail.com'
+      expect(helper.get_comment_email(user.id)).to eq 'factory@mail.co'
     end
   end
 end

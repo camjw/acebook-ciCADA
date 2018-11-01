@@ -12,27 +12,24 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe ImageCommentsHelper, type: :helper do
+RSpec.describe PostsHelper, type: :helper do
   let(:user) { FactoryBot.create(:user) }
 
   before :each do
     login_as(user, scope: :user)
   end
 
-  describe '#find_comment_username' do
+  describe '#find_post_username' do
     it 'gets the correct email for a given image comment' do
-      post = ImageComment.create(user_id: user.id, comment: 'test',
-                                 image_post_id: 2)
-      expect(helper.find_comment_username(post)).to eq 'wethebestmusic'
+      post = Post.create(user_id: user.id, message: 'test')
+      expect(helper.find_post_username(post)).to eq 'wethebestmusic'
     end
   end
 
-  describe '#find_image_comment_email' do
+  describe '#find_post_email' do
     it 'gets the correct email for a given image comment' do
-      post = ImageComment.create(user_id: user.id, comment: 'test',
-                                 image_post_id: 2)
-      email = 'factory@mail.co'
-      expect(helper.find_image_comment_email(post.user_id)).to eq email
+      post = Post.create(user_id: user.id, message: 'test')
+      expect(helper.find_post_email(post)).to eq 'factory@mail.co'
     end
   end
 end

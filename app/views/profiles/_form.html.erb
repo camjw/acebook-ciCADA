@@ -1,6 +1,6 @@
 <%= form_for @post do |form| %>
-  <%= form.label :message %>
   <%= form.text_area :message %>
-<%= form.hidden_field :profile_message, :value => params[:id] %> 
+<%= form.hidden_field :profile_message, :value => params[:id] %><br>
   <%= form.submit "Submit" %>
+  <hr>
 <% end %>

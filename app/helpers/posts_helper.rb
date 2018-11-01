@@ -11,4 +11,8 @@ module PostsHelper
   def find_post_email(post)
     User.where(id: post.user_id)[0].email
   end
+
+  def find_post_username(post)
+    User.find(post.user_id).username
+  end
 end
