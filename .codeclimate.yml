@@ -6,3 +6,7 @@ plugins:
     exclude_paths:
       - spec/
       - app/assets/javascripts/
+  methodlength:
+    enabled: true
+    exclude_paths:
+      - app/assets/javascripts/
