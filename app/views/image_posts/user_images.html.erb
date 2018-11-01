@@ -1,15 +1,50 @@
-<p id="notice"><%= notice %></p>
-
-<h1>My Image Posts</h1>
-
-<% get_images_by_user(current_user).each do |image_post| %>
-  <div>
-    <%= image_tag(image_post.picture_url, width: 600) if image_post.picture.present? %> <br>
-    <%= image_post.caption %> <br>
-    <p> Posted by <%= find_image_post_email(image_post) %> <%= time_ago_in_words(image_post.created_at || Time.now) %> ago. </p>
-
-    <%= link_to 'Edit', edit_image_post_path(image_post) %> |
-    <%= link_to 'Back', image_posts_path %>
-    <hr>
+<div class="container">
+  <div class="row">
+    <h1>My Image Posts</h1>
   </div>
-<% end %>
+  <div class="row">
+    <% get_images_by_user(current_user).each do |image_post| %>
+      <div class="container">
+        <div class="row">
+          <h2><%= image_post.caption %></h2>
+        </div>
+        <div class="row">
+          <%= image_tag image_post.picture_url if image_post.picture.present? %>
+        </div>
+        <div class="row">
+          <%= link_to 'Show', image_post %> |
+          <% if user_made_this_post(image_post) %>
+          <%= link_to 'Edit', edit_image_post_path(image_post) %> | 
+          <%= link_to 'Destroy', image_post_path(image_post, profile_id: current_user.id), method: :delete %>
+          <% end %>
+        </div>
+          <div class="row">
+      <table>
+        <tr>
+          <td>
+            <% image_like_checker = image_post.image_likes.find { |like| like.user_id == current_user.id } %>
+            <% if image_like_checker %>
+            <%= button_to 'Unlike', image_post_image_like_path(image_post[:id], image_like_checker), method: :delete %>
+            <% else %>
+            <%= button_to 'Like', image_post_image_likes_path(image_post[:id]), method: :post %>
+            <% end %>
+          </td>
+          <td>
+            <%= button_to 'Comments', image_post_url(image_post[:id]), method: :get %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><%= image_post.image_likes.count %> <%= image_post.image_likes.count == 1 ? 'Like' : 'Likes'%></p>
+          </td>
+          <td>
+            <p><%= image_post.image_comments.count %> <%= image_post.image_comments.count == 1 ? 'Comment' : 'Comments'%></p>
+          </td>
+        </tr>
+      </table>
+      <hr>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
