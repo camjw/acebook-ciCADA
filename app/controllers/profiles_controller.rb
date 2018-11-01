@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controller for the comments
+# Controller for the profile
 class ProfilesController < ApplicationController
   include ProfilesHelper
   before_action :authenticate_user!
@@ -24,12 +24,5 @@ class ProfilesController < ApplicationController
     @comment = @post.comments.build
     @image_posts = ImagePost.all
     render :show
-  end
-
-  def update_settings
-    parsed_json = params[:profile]
-    user = User.find(parsed_json[:userId])
-    user.update(font: parsed_json[:font],
-                background_colour: parsed_json[:background_colour])
   end
 end

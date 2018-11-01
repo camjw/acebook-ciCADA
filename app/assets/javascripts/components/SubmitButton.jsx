@@ -4,9 +4,14 @@ class SubmitButton extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this)
+    getSettingsData()
+      .then(data => {
+        document.getElementById('colourSelector').value = data.background_colour
+        document.getElementById('fontSelector').value = data.font
+    })
   }
 
-  postToDatabase(font, colour, route) {
+  sendDataToRails(font, colour, route) {
     fetch(FONT_POST_URL, {
       method: 'POST',
       body: JSON.stringify({
@@ -23,7 +28,7 @@ class SubmitButton extends React.Component {
   handleSubmit(event) {
     font = document.getElementById('fontSelector').value
     colour = document.getElementById('colourSelector').value
-    this.postToDatabase(font, colour, window.location.pathname);
+    this.sendDataToRails(font, colour, window.location.pathname)
     document.getElementById('profileBody').style.fontFamily = font
     document.body.style.backgroundColor = colour
   }
