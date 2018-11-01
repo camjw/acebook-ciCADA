@@ -1,3 +1,10 @@
 plugins:
   rubocop:
     enabled: true
+
+engines:
+  duplication:
+    enabled: true
+    exclude_paths:
+      - spec/
+      - app/assets/javascripts
