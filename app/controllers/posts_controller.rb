@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @posts = Post.all
     @post = Post.new
   end
 
@@ -15,8 +16,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @post = Post.new
+    redirect_to root_url
   end
 
   def edit

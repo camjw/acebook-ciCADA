@@ -7,7 +7,7 @@ class ImagePostsController < ApplicationController
   # GET /image_posts
   # GET /image_posts.json
   def index
-    @image_posts = ImagePost.all
+    @image_posts = ImagePost.all || []
   end
 
   # GET /image_posts/1
@@ -20,6 +20,7 @@ class ImagePostsController < ApplicationController
 
   # GET /image_posts/new
   def new
+    @image_posts = ImagePost.all || []
     @image_post = ImagePost.new
   end
 
@@ -29,16 +30,8 @@ class ImagePostsController < ApplicationController
   # POST /image_posts
   # POST /image_posts.json
   def create
-    @image_post = ImagePost.new(image_post_params)
-
-    respond_to do |format|
-      @image_post.save
-      format.html do
-        redirect_to @image_post, notice: 'Image post was'\
-        ' successfully created.'
-      end
-      format.json { render :show, status: :created, location: @image_post }
-    end
+    @image_post = ImagePost.create(image_post_params)
+    redirect_back(fallback_location: root_url)
   end
 
   # PATCH/PUT /image_posts/1

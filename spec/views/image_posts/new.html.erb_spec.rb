@@ -11,6 +11,7 @@ RSpec.describe 'image_posts/new', type: :view do
   end
 
   it 'renders new image_post form' do
+    ImagePost.create(caption: 'MyString', picture: 'MyString')
     render
 
     assert_select 'form[action=?][method=?]', image_posts_path, 'post' do

@@ -6,6 +6,6 @@ RSpec.feature 'Username Route', type: :feature do
   scenario 'Can visit their route with username' do
     signup
     visit '/test'
-    expect(page).to have_content('Welcome to Your profile test')
+    expect(page).to have_content('Welcome to your profile test')
   end
 end
