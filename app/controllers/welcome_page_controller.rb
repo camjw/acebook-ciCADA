@@ -10,7 +10,7 @@ class WelcomePageController < ApplicationController
       @image_posts = ImagePost.all
       @user_email = current_user.email
     else
-      render 'landing_page'
+      render :landing_page
     end
   end
 end
