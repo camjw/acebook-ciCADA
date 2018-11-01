@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :message do
-    content { "MyText" }
+    content { 'MyText' }
   end
   factory :image_like do
   end

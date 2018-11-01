@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
@@ -8,8 +10,6 @@ class MessageBroadcastJob < ApplicationJob
   private
 
   def render_message(message)
-    ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message })
-  end 
-
-
+    ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message })
+  end
 end
