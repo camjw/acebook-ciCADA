@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="col-sm">
-      <%= render "index" %>
+      <% unless @image_posts.nil? %>
+        <%= render "index" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@ class ImagePostsController < ApplicationController
   # GET /image_posts
   # GET /image_posts.json
   def index
-    @image_posts = ImagePost.all
+    @image_posts = ImagePost.all || []
   end
 
   # GET /image_posts/1
@@ -20,7 +20,7 @@ class ImagePostsController < ApplicationController
 
   # GET /image_posts/new
   def new
-    @image_posts = ImagePost.all
+    @image_posts = ImagePost.all || []
     @image_post = ImagePost.new
   end
 

@@ -14,7 +14,7 @@ module ImagePostsHelper
     ImageComment.where(image_post_id: image_post.id)
   end
 
-  def find_post_username(post)
-    User.where(id: post.user_id)[0].username
+  def find_image_post_username(post)
+    User.find(post.user_id).username
   end
 end

@@ -7,7 +7,7 @@
 
       <div>
         <%= image_tag(@image_post.picture_url, width: 600) if @image_post.picture.present? %> <br>
-        <p> Posted by <%= link_to(find_post_username(@image_post), root_url + find_post_username(@image_post)) %> <%= time_ago_in_words(@image_post.created_at || Time.now) %> ago. </p>
+        <p> Posted by <%= link_to(find_image_post_username(@image_post), root_url + find_image_post_username(@image_post)) %> <%= time_ago_in_words(@image_post.created_at || Time.now) %> ago. </p>
 
         <%= link_to 'Edit', edit_image_post_path(@image_post) %> |
         <%= link_to 'Back', image_posts_path %>

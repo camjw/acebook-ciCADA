@@ -95,7 +95,7 @@ RSpec.describe ImagePostsController, type: :controller do
       it 'redirects to the created image_post' do
         post :create, params: { image_post: valid_attributes },
                       session: valid_session
-        expect(response).to redirect_to(ImagePost.last)
+        expect(response).to redirect_to(root_url)
       end
     end
 

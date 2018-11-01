@@ -13,6 +13,6 @@ module PostsHelper
   end
 
   def find_post_username(post)
-    User.where(id: post.user_id)[0].username
+    User.find(post.user_id).username
   end
 end
