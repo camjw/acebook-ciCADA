@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-
   # Serve websocket cable requests in-process
-   mount ActionCable.server => '/cable'
-
-
+  mount ActionCable.server => '/cable'
   get 'rooms/show', to: 'rooms#show'
-
   devise_for :users
   root 'welcome_page#timeline'
 
-  resources :welcome_page
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :welcome_page, :profiles
   get 'posts/delete', to: 'posts#delete'
   post 'posts/create', to: 'posts#create'
   get 'my_images', to: 'image_posts#user_images'
@@ -27,10 +21,6 @@ Rails.application.routes.draw do
     resources :image_comments
     resources :image_likes
   end
-
-  resources :profiles do
-  end
-
   get 'profiles/:id/posts/:post_id/edit', to: 'posts#edit_profile_post'
 
   resources :users do
@@ -40,7 +30,6 @@ Rails.application.routes.draw do
   post '/change_settings', to: 'settings#update_settings'
   get '/change_settings', to: redirect('/')
   get '/display_settings/:id', to: 'settings#display_settings'
-
   get '/:id' => 'profiles#show', :constraints => { id: /\d+/ }
   get '/:username', to: 'profiles#username_show', constraints: { status: /\w+/ }
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationCable
+  # words to calm down rubocop
   class Connection < ActionCable::Connection::Base
     identified_by :current_user
 
@@ -11,8 +12,8 @@ module ApplicationCable
 
     protected
 
-    def find_verified_user # this checks whether a user is authenticated with devise
-      if verified_user = env['warden'].user
+    def find_verified_user
+      if verified_user == env['warden'].user
         verified_user
       else
         reject_unauthorized_connection

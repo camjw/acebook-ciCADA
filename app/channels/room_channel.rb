@@ -1,7 +1,9 @@
-class RoomChannel < ApplicationCable::Channel
+# frozen_string_literal: true
 
+# words to calm down rubocop
+class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
+    stream_from 'room_channel'
   end
 
   def unsubscribed
