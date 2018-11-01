@@ -22,7 +22,7 @@ RSpec.describe SettingsHelper, type: :helper do
   describe '#get_comment_email' do
     it 'gets the correct email for a given user_id' do
       controller.params = { setting: { userId: user.id, font: 'Lobster',
-                            background_colour: 'test' } }
+                                       background_colour: 'test' } }
       helper.update_settings
       expect(user.font).to eq 'Lobster'
     end
