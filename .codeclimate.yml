@@ -5,8 +5,6 @@ plugins:
     enabled: true
     exclude_paths:
       - spec/
-      - app/assets/javascripts/
-  methodlength:
-    enabled: true
-    exclude_paths:
-      - app/assets/javascripts/
+      
+exclude_paths:
+  - app/assets/javascripts/
