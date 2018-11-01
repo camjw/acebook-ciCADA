@@ -12,3 +12,5 @@ plugins:
       - app/assets/javascripts/
 exclude_patterns:
   - app/assets/javascripts/
+  - spec/ 
+  - db/
