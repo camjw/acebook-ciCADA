@@ -3,7 +3,7 @@
 
     <% @image_posts.reverse.each do |image_post| %>
     <div class="image_posts">
-      <br>Posted <%= time_ago_in_words(image_post.created_at || Time.now) %> ago by <%= find_post_email(image_post) %>.</p>
+      <br>Posted <%= time_ago_in_words(image_post.created_at || Time.now) %> ago by <%= link_to(find_post_username(image_post), root_url + find_post_username(image_post)) %>.</p>
 
       <%= image_tag image_post.picture_url, width: '50%' if image_post.picture.present? %><br>
             <%= image_post.caption %><br>

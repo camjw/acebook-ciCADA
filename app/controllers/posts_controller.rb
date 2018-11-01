@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @posts = Post.all
     @post = Post.new
   end
 

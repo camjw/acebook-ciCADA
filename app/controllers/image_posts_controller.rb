@@ -20,6 +20,7 @@ class ImagePostsController < ApplicationController
 
   # GET /image_posts/new
   def new
+    @image_posts = ImagePost.all
     @image_post = ImagePost.new
   end
 

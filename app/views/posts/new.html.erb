@@ -1,16 +1,23 @@
 <div class="container">
   <div class="row">
-    <h1> Add a new post to the timeline: </h1>
-  </div>
-  <div class="row">
-    <%= form_for @post do |form| %>
-    <%= form.label :message %>
-    <%= form.text_area :message %>
+    <div class="col-sm">
+      <div class="row">
+        <h1> Add a new post to the timeline: </h1>
+      </div>
+      <div class="row">
+        <%= form_for @post do |form| %>
+        <%= form.label :message %>
+        <%= form.text_area :message %>
 
-    <%= form.submit "Submit" %>
-    <% end %>
-  </div>
-  <div class="row">
-    <%= link_to 'Back to timeline', root_url %>
+        <%= form.submit "Submit" %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= link_to 'Back to timeline', root_url %>
+      </div>
+    </div>
+    <div class="col-sm">
+      <%= render "index" %>
+    </div>
   </div>
 </div>

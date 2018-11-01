@@ -2,7 +2,7 @@
 <hr>
 <% @posts.where(profile_message: 0).reverse.each do |post| %>
   <p><%= post.message %>
-    <br>Posted <%= time_ago_in_words(post.created_at || Time.now) %> ago by <%= find_post_email(post) %>.</p>
+    <br>Posted <%= time_ago_in_words(post.created_at || Time.now) %> ago by <%= link_to(find_post_username(post), root_url + find_post_username(post)) %>.</p>
   <% if user_made_this_post(post) %>
     <%= link_to edit_post_path(post[:id]) do %>
       Edit post
