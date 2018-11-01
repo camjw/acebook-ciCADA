@@ -1,8 +1,6 @@
 plugins:
   rubocop:
     enabled: true
-
-engines:
   duplication:
     enabled: true
     exclude_paths:
