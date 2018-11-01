@@ -5,6 +5,7 @@ plugins:
     enabled: true
     exclude_paths:
       - spec/
-      
+      - db/
+
 exclude_paths:
   - app/assets/javascripts/
