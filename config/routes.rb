@@ -27,8 +27,7 @@ Rails.application.routes.draw do
     resources :image_posts, only: 'get'
   end
 
-  post '/change_settings', to: 'settings#update_settings'
-  get '/change_settings', to: redirect('/')
+  post '/update_settings', to: 'settings#update_settings'
   get '/display_settings/:id', to: 'settings#display_settings'
   get '/:id' => 'profiles#show', :constraints => { id: /\d+/ }
   get '/:username', to: 'profiles#username_show', constraints: { status: /\w+/ }

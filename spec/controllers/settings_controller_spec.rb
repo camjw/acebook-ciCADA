@@ -14,7 +14,7 @@ RSpec.describe SettingsController, type: :controller do
       post :update_settings, params: { setting:
         { font: 'Times New Roman', background_colour: '#FF0000',
           userId: user.id } }
-      expect(response).to have_http_status(:redirect)
+      expect(response).to have_http_status(302)
     end
   end
 
