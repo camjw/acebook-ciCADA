@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+
+  # Serve websocket cable requests in-process
+   mount ActionCable.server => '/cable'
+
+
+  get 'rooms/show', to: 'rooms#show'
+
   devise_for :users
   root 'welcome_page#timeline'
 
