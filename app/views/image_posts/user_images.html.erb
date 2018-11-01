@@ -1,4 +1,6 @@
-<div class="container">
+<body style='background-color:<%= current_user.background_colour%>'>
+
+<div class="container" style='font-family:"<%= current_user.font %>";'>
   <div class="row">
     <h1>My Image Posts</h1>
   </div>
@@ -14,7 +16,7 @@
         <div class="row">
           <%= link_to 'Show', image_post %> |
           <% if user_made_this_post(image_post) %>
-          <%= link_to 'Edit', edit_image_post_path(image_post) %> | 
+          <%= link_to 'Edit', edit_image_post_path(image_post) %> |
           <%= link_to 'Destroy', image_post_path(image_post, profile_id: current_user.id), method: :delete %>
           <% end %>
         </div>

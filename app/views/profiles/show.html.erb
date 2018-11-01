@@ -3,7 +3,11 @@
 <div id='profileBody' class="container" style='font-family:"<%= @user.font %>";'>
   <div class="row">
     <div class="col-sm">
-      <h1> Welcome to Your profile <%= @user.username %> </h1>
+      <% if current_user == @user %>
+        <h1> Welcome to your profile <%= @user.username %> </h1>
+      <% else %>
+        <h1><%= @user.username %>'s profile </h1>
+      <% end %>
     </div>
     <div class="col-sm">
       <% if current_user.id == @user.id %>
@@ -20,7 +24,7 @@
       <h3>Add a post:</h3>
       <%= render "form" %>
 
-      <h3> Here are your posts </h3>
+      <h3>Wall posts:</h3>
       <% @posts.reverse.each do |post| %>
       <div class='wall_post'>
         <%= simple_format(post.message) %>
@@ -61,10 +65,14 @@
     </div>
 
     <div class="col-sm">
-      <h3>Image Posts</h3>
+      <% if current_user == @user %>
+        <h3>Your image posts:</h1>
+      <% else %>
+        <h3><%= @user.username %>'s image posts: </h1>
+      <% end %>
       <hr>
       <% @image_posts.reverse.each do |image_post| %>
-        <h2><%= image_post.caption %></h2>
+        <h4><%= image_post.caption %></h4>
         <%= image_tag image_post.picture_url, width: '100%' if image_post.picture.present? %>
         <%= link_to 'Show', image_post %>
         <% if user_made_this_post(image_post) %>
