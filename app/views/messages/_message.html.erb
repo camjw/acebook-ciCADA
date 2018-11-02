@@ -2,5 +2,5 @@
   <% message_user = User.find(message.user_id) %>
   <p><%= message_user.username %>:  <%= message.content %> </p>
   <p><%= time_ago_in_words(message.created_at) %> ago.</p>
-  <hr>
+  <hr style="width: 50%;">
 </div>
