@@ -56,7 +56,7 @@ RSpec.describe ImagePostsController, type: :controller do
     it 'returns a success response' do
       ImagePost.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(response).not_to be_successful
+      expect(response).to be_successful
     end
   end
 

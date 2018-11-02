@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'rooms/show', to: 'rooms#show'
   devise_for :users
   root 'welcome_page#timeline'
+  get 'landing_page', to: 'welcome_page#landing'
 
   resources :welcome_page, :profiles
   get 'posts/delete', to: 'posts#delete'

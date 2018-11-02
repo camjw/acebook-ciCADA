@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AimanBook</title>
+    <title>aceBook</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
@@ -14,7 +14,7 @@
   <header>
     <% if current_user %>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">AimanBook</a>
+        <a class="navbar-brand" href="/">aceBook</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,7 +31,7 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/rooms/show">The Wahid Chatroom</a>
+              <a class="nav-link" href="/rooms/show">Chatroom</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href= "<%= '/' + current_user.id.to_s %>" >My Profile</a>

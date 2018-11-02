@@ -5,8 +5,16 @@ class WelcomePageController < ApplicationController
   def sign_in; end
 
   def timeline
-    @posts = Post.all
-    @image_posts = ImagePost.all
-    @user_email = current_user.email
+    if current_user
+      @posts = Post.all
+      @image_posts = ImagePost.all
+      @user_email = current_user.email
+    else
+      landing
+    end
+  end
+
+  def landing
+    render 'landing_page'
   end
 end
