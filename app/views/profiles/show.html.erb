@@ -8,28 +8,30 @@
       <% else %>
         <h1><%= @user.username %>'s profile </h1>
       <% end %>
-      <%= image_tag(@user.profile_pic, width: 600) if @user.profile_pic.present? %> <br>
-
+      <% if @user.profile_pic.present? %>
+        <%= image_tag(@user.profile_pic, height: 200) %> <br>
+      <% else %>
+        <%= image_tag "crowdofpeople.png", height: 200 %> <br>
+      <% end %>
     </div>
     <div class="col-sm">
       <div class="row">
 
-      <% if current_user.id == @user.id %>
-      <h3> Update background settings </h3>
-        <%= react_component 'FontSelect' %>
-        <%= react_component 'ColourSelect' %>
+        <% if current_user.id == @user.id %>
+          <%= react_component 'FontSelect' %>
+          <%= react_component 'ColourSelect' %>
       </div>
       <div class="row">
         <%= react_component 'SubmitButton' %>
-      <% end %>
-
       </div>
+      <% end %>
       <div class="row">
         <% if current_user.id == @user.id %>
           <%= form_for @user, :url => {:action => 'update'} do |form| %>
             <div class="row">
               <div class="col-sm">
-                <h3> Update profile pic </h3>
+                <br>
+                <h4> Update profile pic </h4>
                 <div class="field">
                   <%= form.file_field :profile_pic, id: :user_profile_pic %>
                 </div>
@@ -42,7 +44,6 @@
           </div>
       </div>
     </div>
-  </div>
   <hr>
   <div class="row">
     <div class="col-sm">
