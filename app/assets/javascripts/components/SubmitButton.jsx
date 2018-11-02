@@ -1,4 +1,4 @@
-const FONT_POST_URL = "http://" + window.location.host + "/change_settings"
+const FONT_POST_URL = "http://" + window.location.host + "/update_settings"
 
 class SubmitButton extends React.Component {
   constructor(props) {
