@@ -1,12 +1,15 @@
 <div class="container" style="text-align:center">
   <h1>ciCADA Chat</h1>
-  <div>
-    <p>
-      <% User.find("last_sign_in_at", 15.minutes.ago).each do | user| %>
-        <span><%= user %> </span>
+
+  <div class="user__list jumbotron">
+    <h3>Users Online:</h3>
+    <% User.all.each do |user| %>
+      <% if user.current_sign_in_at < 0.minutes.ago && user.current_sign_in_at > 5.minutes.ago %>
+        <p style="font-size:15px">- <%= user.username %> is online. </p>
       <% end %>
-    </p>
+    <% end %>
   </div>
+
   <div class="sending__message jumbotron">
     <form id="usrform">
       <label>Say something:</label><br>

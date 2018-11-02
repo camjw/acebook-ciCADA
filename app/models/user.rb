@@ -14,8 +14,4 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable
-
-  def online?
-    updated_at > 10.minutes.ago
-  end
 end
