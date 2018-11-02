@@ -1,6 +1,18 @@
 <div class="message">
-  <% message_user = User.find(message.user_id) %>
-  <p><%= message_user.username %>:  <%= message.content %> </p>
-  <p><%= time_ago_in_words(message.created_at) %> ago.</p>
-  <hr style="width: 50%;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <p><%= message.content %>
+          <br>Posted <%= time_ago_in_words(message.created_at || Time.now) %> ago by <%= link_to(find_message_username(message), root_url + find_message_username(message)) %>.</p>
+      </div>
+      <div class="col-sm">
+        <% if find_message_user(message).profile_pic.present? %>
+          <%= image_tag(find_message_user(message).profile_pic, height: 70) %> <br>
+        <% else %>
+          <%= image_tag "crowdofpeople.png", height: 50 %> <br>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  </div>
 </div>
