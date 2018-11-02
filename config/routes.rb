@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :image_comments
     resources :image_likes
   end
+
+  post 'profiles/update', to: 'profiles#update'
+
   get 'profiles/:id/posts/:post_id/edit', to: 'posts#edit_profile_post'
 
   resources :users do

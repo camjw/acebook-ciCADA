@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101112129) do
+ActiveRecord::Schema.define(version: 20181102103530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20181101112129) do
     t.string "username"
     t.string "font", default: "Lobster"
     t.string "background_colour", default: "#FFFFFF"
+    t.string "profile_pic"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

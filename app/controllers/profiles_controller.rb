@@ -25,4 +25,15 @@ class ProfilesController < ApplicationController
     @image_posts = ImagePost.all
     render :show
   end
+
+  def update
+    current_user.update(profile_pic_post_params)
+    redirect_back(fallback_location: root_url)
+  end
+
+  private
+
+  def profile_pic_post_params
+    params.require(:user).permit(:profile_pic)
+  end
 end
