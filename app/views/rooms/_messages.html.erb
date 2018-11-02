@@ -1,0 +1,7 @@
+<% @messages.each do |message| %>
+  <% unless message.user_id.nil? %>
+    <p><%= message.content %>
+      <br>Posted <%= time_ago_in_words(message.created_at || Time.now) %> ago by.</p>
+    <hr>
+  <% end %>
+<% end %>
