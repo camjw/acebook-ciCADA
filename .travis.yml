@@ -16,6 +16,7 @@ before_script:
 
 script:
   - bundle install --jobs=3 --retry=3
+  - bundle exec bin/rails db:drop
   - bundle exec bin/rails db:create
   - bundle exec bin/rails db:migrate
   - bundle exec rspec
