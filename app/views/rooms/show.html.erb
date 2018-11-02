@@ -1,5 +1,12 @@
 <div class="container" style="text-align:center">
   <h1>ciCADA Chat</h1>
+  <div>
+    <p>
+      <% User.find("last_sign_in_at", 15.minutes.ago).each do | user| %>
+        <span><%= user %> </span>
+      <% end %>
+    </p>
+  </div>
   <div class="sending__message jumbotron">
     <form id="usrform">
       <label>Say something:</label><br>
