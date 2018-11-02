@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe ProfilesController, type: :controller do
-  let(:valid_attributes) do
-    { message: "The Bee's Knees", user_id: user.id, profile_message: 3 }
-  end
-
   let(:valid_session) { {} }
 
   let(:user) { FactoryBot.create(:user) }
