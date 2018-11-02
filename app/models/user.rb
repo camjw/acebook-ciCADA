@@ -2,6 +2,9 @@
 
 # Devise Class for our Users that interacts with our database
 class User < ApplicationRecord
+  mount_uploader :profile_pic, PictureUploader
+  validates_processing_of :profile_pic
+
   has_many :posts
   has_many :image_posts
   has_many :comments

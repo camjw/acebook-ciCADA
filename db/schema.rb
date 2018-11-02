@@ -15,12 +15,6 @@ ActiveRecord::Schema.define(version: 20181102103530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chats", force: :cascade do |t|
-    t.string "identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "user_id"
@@ -79,13 +73,6 @@ ActiveRecord::Schema.define(version: 20181102103530) do
     t.integer "user_id"
     t.integer "likeCount", default: 0
     t.integer "profile_message", default: 0
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer "chat_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
