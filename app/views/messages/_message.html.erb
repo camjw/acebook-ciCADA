@@ -1,6 +1,6 @@
 <div class="message">
-  <p><%= message.content %> </p>
-  <p><%= message.created_at %> </p>
   <% message_user = User.find(message.user_id) %>
-  <p>Posted by: <%= message_user.username %> </p>
+  <p><%= message_user.username %>:  <%= message.content %> </p>
+  <p><%= time_ago_in_words(message.created_at) %> ago.</p>
+  <hr style="width: 50%;">
 </div>

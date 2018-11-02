@@ -1,3 +1,27 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user__list {
+  position: fixed;
+  right: 100px;
+  font-size: 20px;
+  width: 29%;
+}
+
+.message-group {
+  padding: 5%;
+  margin-top: 10px; 
+  border: 2px solid black;
+  width: 60%;
+}
+
+.sending__message {
+  position: fixed;
+  bottom: 0;
+  right: 100px;
+}
+
+.jumbotron {
+  background-color: rgba(0,0,0,0.2)
+}

@@ -8,20 +8,24 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   received: function(data) {
-    $('#messages').append(data['message']);
+    $("#messages").append(data["message"]);
   },
 
   speak: function(message) {
-    return this.perform('speak', {
+    return this.perform("speak", {
       message: message
     });
   }
 });
 
-$(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+$(document).on("keypress", "[data-behavior~=room_speaker]", function(event) {
   if (event.keyCode === 13) {
     App.room.speak(event.target.value);
-    event.target.value = '';
+    event.target.value = "";
+    window.scrollTo(
+      0,
+      document.querySelector(".scrollingContainer").scrollHeight
+    );
     return event.preventDefault();
   }
 });
