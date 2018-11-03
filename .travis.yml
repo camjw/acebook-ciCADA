@@ -31,8 +31,8 @@ deploy:
   secret_access_key:
     secure: $EB_SA_KEY
   region: "eu-west-2"
-  app: "acebook-ciCADA"
-  env: "acebook-ciCADA-dev"
-  bucket_name: "elasticbeanstalk-eu-west-2-423668963318"
+  app: "acebook"
+  env: "prod"
+  bucket_name: "elasticbeanstalk-eu-west-2-070902681357"
   on:
     branch: deployment
