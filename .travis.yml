@@ -35,4 +35,4 @@ deploy:
   env: "acebook-ciCADA-dev"
   bucket_name: "elasticbeanstalk-eu-west-2-423668963318"
   on:
-    branch: master
+    branch: deployment

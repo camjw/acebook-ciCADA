@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 # able to use uploader and upload images
 gem 'carrierwave'
-
+gem 'pry'
 # Add Devise to application for users
 gem 'devise'
 
