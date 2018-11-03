@@ -14,3 +14,11 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
     - 'config/routes.rb'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'config/initializers/sidekiq.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'config/initializers/sidekiq.rb'
