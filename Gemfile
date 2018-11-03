@@ -15,6 +15,10 @@ gem 'devise'
 # add React gem
 gem 'react-rails'
 
+# adding these two gems to enable action cable on AWS
+gem 'sidekiq'
+gem 'redis-rails'
+
 # Add exception handler
 gem 'exception_handler'
 
