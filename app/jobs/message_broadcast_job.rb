@@ -3,7 +3,7 @@
 # words to calm down rubocop
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
-  # :nocov:
+
   def perform(message)
     ActionCable.server.broadcast 'room_channel',
                                  message: render_message(message)
