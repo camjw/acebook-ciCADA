@@ -6,7 +6,7 @@ RSpec.feature 'Timeline', type: :feature do
   scenario 'Can submit posts and view them' do
     signup
     visit '/image_posts/new'
-    fill_in 'Caption', with: 'my logo'
+    fill_in 'image_post_caption', with: 'my logo'
     click_button('Create Image post')
     visit '/my_images'
     expect(page).to have_content('my logo')
